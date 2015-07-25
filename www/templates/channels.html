@@ -1,7 +1,7 @@
 <ion-view view-title="Channels">
   <ion-content>
     <ion-list>
-      <ion-item ng-repeat="channel in channels" href="#/app/channel/{{channel.endpoint}}">
+      <ion-item ng-repeat="channel in channels" href="#/app/channel/{{channel.endpoint | split:'/':2}}">
         {{channel.name}}
       </ion-item>
     </ion-list>

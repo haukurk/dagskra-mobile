@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('dagskra', ['ionic', 'dagskra.controllers'])
+angular.module('dagskra', ['ionic', 'dagskra.controllers', 'ordabok.filters'])
  
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -37,47 +37,21 @@ angular.module('dagskra', ['ionic', 'dagskra.controllers'])
     views: {
       'menuContent': {
         templateUrl: 'templates/channels.html',
-        controller: 'ChannelCtrl'
+        controller: 'ChannelsCtrl'
       }
     }
   })
   
-  .state('app.search', {
-    url: '/search',
+   .state('app.channel', {
+    url: '/channel/:channelendpoint',
     views: {
       'menuContent': {
-        templateUrl: 'templates/search.html'
-      }
-    }
-  })
-
-  .state('app.browse', {
-      url: '/browse',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/browse.html'
-        }
-      }
-    })
-    .state('app.playlists', {
-      url: '/playlists',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
-        }
-      }
-    })
-
-  .state('app.single', {
-    url: '/playlists/:playlistId',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
+        templateUrl: 'templates/channel.html',
+        controller: 'ChannelCtrl'
       }
     }
   });
+    
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/app/channels');
 });
